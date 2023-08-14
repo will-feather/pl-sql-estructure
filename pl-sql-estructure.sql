@@ -1,3 +1,49 @@
+----------------------------------------------------------------
+--                      PL/SQL COMANDOS                       --
+----------------------------------------------------------------
+
+--> PROCESURES INICIO
+
+SET SERVEROUTPUT ON;
+
+--> INICIO
+
+BEGIN
+	DBMS_OUTPUT.put_line('Hello World!');
+END;
+
+--> IF
+
+DECLARE
+	meu_nome VARCHAR2(35);
+BEGIN
+	meu_nome := 'William';
+	IF NOT meu_nome <> 'Goku' THEN
+		DBMS_OUTPUT.put_line('O meu nome é diferente de '|| meu_nome);
+	ELSIF meu_nome IS NOT NULL THEN
+		DBMS_OUTPUT.put_line('O meu nome é: ' || meu_nome);
+	ELSE 
+		DBMS_OUTPUT.put_line('O meu nome é William');
+	END IF;
+EXCEPTION WHEN OTHERS THEN
+	DBMS_OUTPUT.put_line(SQLERRM);
+END;
+
+--> CASE
+
+BEGIN
+	CASE
+		WHEN (1 > 3) THEN 
+			DBMS_OUTPUT.put_line('Conta errada!');
+		WHEN (3 > 1) THEN
+			DBMS_OUTPUT.put_line('Está correto!');
+		ELSE
+			DBMS_OUTPUT.put_line('Não deu certo!');
+	END CASE;
+END;
+
+--> LOOP
+
 BEGIN
 	FOR i IN 1 .. 10 LOOP
 		DBMS_OUTPUT.put_line('Linha :' || i);
@@ -43,3 +89,4 @@ BEGIN
     END IF;
 
 END SP_CONFERE_NM_FUNCIONARIO;
+
